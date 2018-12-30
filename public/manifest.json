@@ -1,6 +1,6 @@
 {
-  "name": "foo",
-  "short_name": "foo",
+  "name": "shuffler",
+  "short_name": "shuffler",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
