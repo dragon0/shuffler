@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="logo" src="./assets/logo.png">
+    <Shuffler/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Shuffler from './components/Shuffler.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Shuffler
   }
 }
 </script>

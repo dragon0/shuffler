@@ -1,4 +1,11 @@
 module.exports = {
-    baseUrl: "shuffler/"
+    baseUrl: "shuffler/",
+    css: {
+        loaderOptions: {
+            sass: {
+                data: "@import '@/_variables.scss';"
+            }
+        }
+    }
 }
 
