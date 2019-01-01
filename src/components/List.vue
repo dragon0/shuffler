@@ -27,11 +27,11 @@
     methods:{
 
       addItem: function(){
-        if(this.tempItem !== ''){
-          this.$emit('add-to-list', {id: this.nextKey, text: this.tempItem});
+        if(this.tempItem.trim() !== ''){
+          this.$emit('add-to-list', {id: this.nextKey, text: this.tempItem.trim()});
           this.nextKey += 1;
-          this.tempItem = '';
         }
+        this.tempItem = '';
       }
 
     }
