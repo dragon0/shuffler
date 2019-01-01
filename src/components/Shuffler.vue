@@ -1,19 +1,32 @@
 <template>
   <div class="shuffler">
+    <div class="shuffle">
+      <button v-on:click="shuffle">Shuffle</button>
+    </div>
+
     <div class="list-container">
+
       <List
          v-for="list in lists"
          v-bind:key="list.id"
          v-bind:items="list.items"
          v-on:add-to-list="addToList(list.id, $event)"
          v-on:remove-from-list="removeFromList(list.id, $event)"/>
+
+      <div class="new-list">
+        <button v-on:click="addList">+</button>
+      </div>
     </div>
-    <div class="new-list">
-      <button v-on:click="addList">+</button>
+
+    <div 
+           v-if="shuffleResult.length != 0"
+           class="shuffle-result">
+      <h3>Results</h3>
+      <List
+         readonly="true"
+         v-bind:items="shuffleResult"/>
     </div>
-    <div class="shuffle">
-      <button v-on:click="shuffle">Shuffle</button>
-    </div>
+
   </div>
 </template>
 
@@ -28,7 +41,8 @@
 
     data: ()=>{return{
       lists: [{id: 0, items: []}, {id: 1, items: []}],
-      nextId: 2
+      nextId: 2,
+      shuffleResult: []
     }},
 
     methods: {
@@ -83,8 +97,7 @@
         }
         console.log(newList);
 
-        this.lists.push({id: this.nextId, items: newList});
-        this.nextId++;
+        this.shuffleResult = newList;
       }
     },
 
@@ -97,18 +110,32 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.list-container {
+  display: flex;
+
+  @media screen and (min-width: $desktop-width){
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: $desktop-width){
+    flex-direction: column;
+  }
+
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.shuffle-result {
+  display: flex;
+    flex-direction: column;
 }
-a {
-  color: #42b983;
+
+.new-list {
+
 }
+
 </style>

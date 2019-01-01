@@ -1,12 +1,12 @@
 <template>
   <div class="list">
-    <div class="add-item">
+    <div class="add-item" v-if="!readonly">
       <input v-model="tempItem" v-on:keyup.enter="addItem"><button v-on:click="addItem">+</button>
     </div>
     <ul>
       <li v-for="item in items" v-bind:key="item.id">
         <span class="list-item">{{ item.text }}</span>
-        <button v-on:click="$emit('remove-from-list', item.id)">-</button>
+        <button v-if="!readonly" v-on:click="$emit('remove-from-list', item.id)">-</button>
       </li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
   export default {
     name: 'List',
 
-    props: ['items'],
+    props: ['items', 'readonly'],
 
     data: () => {return{
       nextKey: 0,
@@ -42,11 +42,10 @@
 
 .list{
   border: 1px solid black;
+}
 
-  @media screen and (min-width: $desktop-width){
-    float: left;
-  }
-
+.list ul{
+  text-align: left;
 }
 
 </style>
