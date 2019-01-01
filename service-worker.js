@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/shuffler/precache-manifest.80e9b50d4f3403671ee111ddd41008df.js"
+  "/shuffler/precache-manifest.a73c59e363bfa5a2d3117ab3057e23df.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "shuffler"});
